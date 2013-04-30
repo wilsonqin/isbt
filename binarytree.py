@@ -7,23 +7,15 @@ def print_instr():
 	print "python binarytree.py [node-depth]"
 	sys.exit()
 
-#not actually needed. oops
-def is_power(num):
-	if num == 0:
-		true 
-	elif (num % 2) == 0:
-		return is_power(num / 2)
-	return false
-
-def get_tree_size(depth):
-	return ((2 ** depth) - 1)
-
-def calculate_tree(size):
-	print "This is tree size: ", size
-	tree_arr = []
-	for i in range(0,size):
-		tree_arr.append(i)
-	return
+def get_sets(depth):
+	if depth == 0:
+		return 1
+	elif depth == 1:
+		return 2
+	elif depth == 2:
+		return 5
+	else:
+		return pow(get_sets(depth-2),4) + pow(get_sets(depth-1),2)
 
 def run():
 	if len(sys.argv) < 2:
@@ -31,8 +23,8 @@ def run():
 		print_instr()
 
 	if len(sys.argv[1]) > 0:
-		tree_size = get_tree_size(int(sys.argv[1]))
-		calculate_tree(tree_size)
+		print get_sets(int(sys.argv[1]))
 	return
+
 
 run()
